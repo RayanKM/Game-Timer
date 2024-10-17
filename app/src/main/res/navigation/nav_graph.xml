@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/clockFragment">
+
+    <fragment
+        android:id="@+id/clockFragment"
+        android:name="com.watch.cardtimer.fragments.clock.ClockFragment"
+        android:label="ClockFragment"
+        tools:layout="@layout/fragment_clock">
+        <action
+            android:id="@+id/action_clockFragment_to_clockListFragment"
+            app:destination="@id/clockListFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/freeze"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/clockListFragment"
+        android:name="com.watch.cardtimer.fragments.clock_list.ClockListFragment"
+        android:label="fragment_clock_list"
+        tools:layout="@layout/fragment_clock_list">
+        <action
+            android:id="@+id/action_clockListFragment_to_timeControlFragment"
+            app:destination="@id/timeControlFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/freeze"
+            app:popEnterAnim="@anim/freeze"
+            app:popExitAnim="@anim/slide_out_bottom" />
+        <action
+            android:id="@+id/action_clockListFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.watch.cardtimer.fragments.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settingsFragment_to_themeCustomizationFragment"
+            app:destination="@id/themeCustomizationFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/timeControlFragment"
+        android:name="com.watch.cardtimer.fragments.time_control_fragment.TimeControlFragment"
+        android:label="fragment_time_control"
+        tools:layout="@layout/fragment_time_control">
+        <argument
+            android:name="clockId"
+            android:defaultValue="-1L"
+            app:argType="long" />
+        <argument
+            android:name="edit_option"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/themeCustomizationFragment"
+        android:name="com.watch.cardtimer.fragments.settings.theme_customization.ThemeCustomizationFragment"
+        android:label="fragment_theme_customization"
+        tools:layout="@layout/fragment_theme_customization">
+        <action
+            android:id="@+id/action_themeCustomizationFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:popUpTo="@id/settingsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>
